@@ -5,10 +5,9 @@ public class ProductIterator implements Iterator<Product> {
 	private ClassProductList classProductList;
 	private int position;
 
+
 	public boolean hasNext() {
-		if(position >= classProductList.size())
-			return false;
-		return true;
+       return false;
 	}
 
 	@Override
@@ -21,8 +20,12 @@ public class ProductIterator implements Iterator<Product> {
 		Iterator.super.remove();
 	}
 
-	public Product Next() {
-		return classProductList.get(position++);
+	public String next(Iterator iterator) {
+		if(iterator.hasNext())
+		{
+			return (String) iterator.next();
+		}
+		return null;
 	}
 
 	public void MoveToHead() {

@@ -1,9 +1,12 @@
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 public class Facade {
 
-	boolean userType;
+	int userType;
 
 	public static int value;
 
@@ -15,55 +18,88 @@ public class Facade {
 
 	private Person thePerson;
 
-	public void startFacade() throws IOException {
+	public void runFacade() throws IOException {
 
 		System.out.println("Facade pattern initiated ");
 		userType = login(new Login());
-		System.out.println(
-				"Select from available Course Menus \n 1. Meat:Beef \n 2. Meat:Pork \n 3. Meat:Mutton \n 4. Produce:Tomato \n 5. Produce:Onion \n ");
-		Scanner scan = new Scanner(System.in);
-		theSelectedProduct = scan.nextLine();
-
-		// pattern implemented (Bridge implementation and Factory implementation
-		if (theSelectedProduct.equalsIgnoreCase("Meat:Beef")) {
-			System.out.print(value);
-			SelectProduct(new MeatProductMenu(), value);
-		} else if (theSelectedProduct.equalsIgnoreCase("Meat:Pork")) {
-			System.out.print(value);
-			SelectProduct(new MeatProductMenu(), value);
-		} else if (theSelectedProduct.equalsIgnoreCase("Meat:Mutton")) {
-			System.out.print(value);
-			SelectProduct(new MeatProductMenu(), value);
-		} else if (theSelectedProduct.equalsIgnoreCase("Produce:Tomato")) {
-			System.out.print(value);
-			SelectProduct(new ProduceProductMenu(), value);
-		} else if (theSelectedProduct.equalsIgnoreCase("Produce:Onion")) {
-			System.out.print(value);
-			SelectProduct(new ProduceProductMenu(), value);
+		if(userType==-1){
+			System.exit(0);
 		}
-		else {
-			System.out.println("Wrong Selection");
-			System.exit(-1);
+//		System.out.println(
+//				"Select from available Course Menus \n 1. Meat:Beef \n 2. Meat:Pork \n 3. Meat:Mutton \n 4. Produce:Tomato \n 5. Produce:Onion \n ");
+//		Scanner scan = new Scanner(System.in);
+//		theSelectedProduct = scan.nextLine();
+
+//		// pattern implemented (Bridge implementation and Factory implementation
+//		if (theSelectedProduct.equalsIgnoreCase("Meat:Beef")) {
+//			System.out.print(value);
+//			SelectProduct(new MeatProductMenu(), value);
+//		} else if (theSelectedProduct.equalsIgnoreCase("Meat:Pork")) {
+//			System.out.print(value);
+//			SelectProduct(new MeatProductMenu(), value);
+//		} else if (theSelectedProduct.equalsIgnoreCase("Meat:Mutton")) {
+//			System.out.print(value);
+//			SelectProduct(new MeatProductMenu(), value);
+//		} else if (theSelectedProduct.equalsIgnoreCase("Produce:Tomato")) {
+//			System.out.print(value);
+//			SelectProduct(new ProduceProductMenu(), value);
+//		} else if (theSelectedProduct.equalsIgnoreCase("Produce:Onion")) {
+//			System.out.print(value);
+//			SelectProduct(new ProduceProductMenu(), value);
+//		}
+//		else {
+//			System.out.println("Wrong Selection");
+//			System.exit(-1);
+//		}
+//
+//		scan.close();
+
+
+		// Implementing iterator pattern
+
+		//Traversing through the product list using the iterat	or pattern
+
+		System.out.println("\nImplementing the iterator pattern and printing the product list:- \n");
+
+		System.out.println("\nThe product list as follows\n");
+
+		ArrayList<String> productMenuList= new ArrayList<>();
+		productMenuList.add("Meat:Beef");
+		productMenuList.add("Meat:Pork");
+		productMenuList.add("Meat:Mutton");
+		productMenuList.add("Produce:Tomato");
+		productMenuList.add("Produce:Onion");
+
+		Iterator iterator = productMenuList.iterator();
+        ProductIterator productIterator = new ProductIterator();
+		while(iterator.hasNext()) {
+			System.out.println(productIterator.next(iterator));
 		}
 
-		scan.close();
+		System.out.println("\nThe user product list as follows\n");
+
+		ArrayList<String> userProductMenuList= new ArrayList<>();
+		userProductMenuList.add("tutu:Beef");
+		userProductMenuList.add("tutu:Tomato");
+		userProductMenuList.add("mimi:Beef");
+		userProductMenuList.add("pepe:Beef");
+		userProductMenuList.add("pepe:Tomato");
+		userProductMenuList.add("pepe:Onion");
+
+
+		iterator = userProductMenuList.iterator();
+		OfferingIterator offeringIterator = new OfferingIterator();
+		while(iterator.hasNext()) {
+			System.out.println(offeringIterator.next(iterator));
+		}
+
 	}
 
 
 
-	public boolean login(Login object) throws IOException {
+	public int login(Login object) throws IOException {
 		int x=object.login();
-
-		value=x;
-
-		if(x==0 || x==1)
-		{
-			return true;
-		}
-		else {
-			return false;
-		}
-
+		return x;
 	}
 
 	public void addTrading() {
