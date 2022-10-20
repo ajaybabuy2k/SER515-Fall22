@@ -1,4 +1,6 @@
-public class ClassProductList {
+import java.util.ArrayList;
+
+public class ClassProductList extends ArrayList<Product> {
 
 	private ReminderVisitor reminderVisitor;
 
