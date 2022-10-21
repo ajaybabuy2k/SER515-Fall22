@@ -7,11 +7,12 @@ public class ProduceProductMenu implements ProductMenu {
 
 	public void showMenu() throws IOException {
 
+		System.out.println("Implementing the factory pattern");
 
 		File productInfoFile = new File("resources/ProductInfo.txt");
 		BufferedReader br = new BufferedReader((new FileReader(productInfoFile)));
 		String fileValue;
-		System.out.println("Produce Product menu ");
+		System.out.println("Produce Product menu \n");
 
 		while((fileValue=br.readLine())!=null)
 		{

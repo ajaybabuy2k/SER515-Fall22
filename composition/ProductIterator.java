@@ -40,13 +40,13 @@ public class ProductIterator implements Iterator<Product> {
 
 	public void displayUserChoice(String menuCategorySelected) throws IOException {
 
-		if(menuCategorySelected.equals("1"))
+		if(menuCategorySelected.equals("meat"))
 		{
 			MeatProductMenu meatProduct= new MeatProductMenu();
 			meatProduct.showMenu();
 		}
 
-		else if(menuCategorySelected.equals("2"))
+		else if(menuCategorySelected.equals("produce"))
 		{
 			ProduceProductMenu produceProduct = new ProduceProductMenu();
 			produceProduct.showMenu();

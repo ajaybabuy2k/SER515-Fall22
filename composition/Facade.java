@@ -41,10 +41,10 @@ public class Facade {
 		productMenuList.add("Produce:Tomato");
 		productMenuList.add("Produce:Onion");
 
-		Iterator iterator = productMenuList.iterator();
+		Iterator iter = productMenuList.iterator();
         ProductIterator productIterator = new ProductIterator();
-		while(iterator.hasNext()) {
-			System.out.println(productIterator.next(iterator));
+		while(iter.hasNext()) {
+			System.out.println(productIterator.next(iter));
 		}
 
 		System.out.println("The user product list as follows\n");
@@ -58,25 +58,25 @@ public class Facade {
 		userProductMenuList.add("pepe:Onion");
 
 
-		iterator = userProductMenuList.iterator();
+		iter = userProductMenuList.iterator();
 		OfferingIterator offeringIterator = new OfferingIterator();
-		while(iterator.hasNext()) {
-			System.out.println(offeringIterator.next(iterator));
+		while(iter.hasNext()) {
+			System.out.println(offeringIterator.next(iter));
 		}
 
 		// Implementing bridge pattern
 
-		System.out.println("Implementing the bridge pattern");
+		System.out.println("\nImplementing the bridge pattern\n");
 
 		String userMenuOption="Not Avail";
 
 		Scanner sc = new Scanner(System.in);
 
-		while(!userMenuOption.equals("exit"))
+		while(!userMenuOption.equals("quit"))
 		{
-			System.out.println("Select from available Course Menus \n 1. Meat \n 2. Produce\n ");
+			System.out.println("\nSelect from Product Menu Type \nmeat or produce\nType meat for meat Product & produce for produce Product \n ");
 			userMenuOption=sc.next();
-			if(userMenuOption.equals("1") || userMenuOption.equals("2"))
+			if(userMenuOption.equalsIgnoreCase("meat") || userMenuOption.equalsIgnoreCase("produce"))
 			{
 				ProductIterator productMenuIterator= new ProductIterator();
 				productMenuIterator.displayUserChoice(userMenuOption);
@@ -84,15 +84,13 @@ public class Facade {
 
 		}
 
-
-
 	}
-
 
 	public int login(Login object) throws IOException {
 
 		int x=object.login();
 		return x;
+
 	}
 
 	public void addTrading() {

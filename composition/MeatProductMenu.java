@@ -8,13 +8,15 @@ public class MeatProductMenu implements ProductMenu {
 
 	public void showMenu() throws IOException {
 
+		System.out.println("Implementing the factory pattern\n");
+
 		String beforeColon;
 		String afterColon;
 
 		File productInfoFile = new File("resources/ProductInfo.txt");
 		BufferedReader br = new BufferedReader((new FileReader(productInfoFile)));
 		String fileValue;
-		System.out.println("Meat Product menu ");
+		System.out.println("Meat Product menu \n");
 
 		while((fileValue=br.readLine())!=null)
 		{
@@ -24,9 +26,6 @@ public class MeatProductMenu implements ProductMenu {
 			if(beforeColon.equals("Meat"))
 				System.out.println("Meat" + afterColon);
 		}
-
-
-
 	}
 
 	public void showAddButton() {
