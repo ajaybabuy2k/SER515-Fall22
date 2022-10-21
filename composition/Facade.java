@@ -25,43 +25,14 @@ public class Facade {
 		if(userType==-1){
 			System.exit(0);
 		}
-//		System.out.println(
-//				"Select from available Course Menus \n 1. Meat:Beef \n 2. Meat:Pork \n 3. Meat:Mutton \n 4. Produce:Tomato \n 5. Produce:Onion \n ");
-//		Scanner scan = new Scanner(System.in);
-//		theSelectedProduct = scan.nextLine();
-
-//		// pattern implemented (Bridge implementation and Factory implementation
-//		if (theSelectedProduct.equalsIgnoreCase("Meat:Beef")) {
-//			System.out.print(value);
-//			SelectProduct(new MeatProductMenu(), value);
-//		} else if (theSelectedProduct.equalsIgnoreCase("Meat:Pork")) {
-//			System.out.print(value);
-//			SelectProduct(new MeatProductMenu(), value);
-//		} else if (theSelectedProduct.equalsIgnoreCase("Meat:Mutton")) {
-//			System.out.print(value);
-//			SelectProduct(new MeatProductMenu(), value);
-//		} else if (theSelectedProduct.equalsIgnoreCase("Produce:Tomato")) {
-//			System.out.print(value);
-//			SelectProduct(new ProduceProductMenu(), value);
-//		} else if (theSelectedProduct.equalsIgnoreCase("Produce:Onion")) {
-//			System.out.print(value);
-//			SelectProduct(new ProduceProductMenu(), value);
-//		}
-//		else {
-//			System.out.println("Wrong Selection");
-//			System.exit(-1);
-//		}
-//
-//		scan.close();
-
 
 		// Implementing iterator pattern
 
-		//Traversing through the product list using the iterat	or pattern
+		//Traversing through the product list using the iterator pattern
 
-		System.out.println("\nImplementing the iterator pattern and printing the product list:- \n");
+		System.out.println("\nImplementing the iterator pattern \n");
 
-		System.out.println("\nThe product list as follows\n");
+		System.out.println("The product list as follows\n");
 
 		ArrayList<String> productMenuList= new ArrayList<>();
 		productMenuList.add("Meat:Beef");
@@ -76,7 +47,7 @@ public class Facade {
 			System.out.println(productIterator.next(iterator));
 		}
 
-		System.out.println("\nThe user product list as follows\n");
+		System.out.println("The user product list as follows\n");
 
 		ArrayList<String> userProductMenuList= new ArrayList<>();
 		userProductMenuList.add("tutu:Beef");
@@ -93,11 +64,33 @@ public class Facade {
 			System.out.println(offeringIterator.next(iterator));
 		}
 
+		// Implementing bridge pattern
+
+		System.out.println("Implementing the bridge pattern");
+
+		String userMenuOption="Not Avail";
+
+		Scanner sc = new Scanner(System.in);
+
+		while(!userMenuOption.equals("exit"))
+		{
+			System.out.println("Select from available Course Menus \n 1. Meat \n 2. Produce\n ");
+			userMenuOption=sc.next();
+			if(userMenuOption.equals("1") || userMenuOption.equals("2"))
+			{
+				ProductIterator productMenuIterator= new ProductIterator();
+				productMenuIterator.displayUserChoice(userMenuOption);
+			}
+
+		}
+
+
+
 	}
 
 
-
 	public int login(Login object) throws IOException {
+
 		int x=object.login();
 		return x;
 	}
@@ -145,5 +138,7 @@ public class Facade {
 	public void productOperation() {
 
 	}
+
+
 
 }

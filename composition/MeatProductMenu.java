@@ -1,6 +1,31 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.Scanner;
+import java.io.*;
+
+
 public class MeatProductMenu implements ProductMenu {
 
-	public void showMenu() {
+	public void showMenu() throws IOException {
+
+		String beforeColon;
+		String afterColon;
+
+		File productInfoFile = new File("resources/ProductInfo.txt");
+		BufferedReader br = new BufferedReader((new FileReader(productInfoFile)));
+		String fileValue;
+		System.out.println("Meat Product menu ");
+
+		while((fileValue=br.readLine())!=null)
+		{
+			String[] splitArray = fileValue.split(":");
+			beforeColon = splitArray[0];
+			afterColon=splitArray[1];
+			if(beforeColon.equals("Meat"))
+				System.out.println("Meat" + afterColon);
+		}
+
+
 
 	}
 
@@ -23,5 +48,8 @@ public class MeatProductMenu implements ProductMenu {
 	public void showComboxes() {
 
 	}
+
+
+
 
 }

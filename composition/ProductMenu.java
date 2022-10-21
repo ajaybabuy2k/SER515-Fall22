@@ -1,7 +1,7 @@
+import java.io.FileNotFoundException;
+
 public interface ProductMenu {
 
-
-	public abstract void showMenu();
 
 	public abstract void showAddButton();
 
@@ -12,5 +12,6 @@ public interface ProductMenu {
 	public abstract void showLabels();
 
 	public abstract void showComboxes();
+
 
 }
